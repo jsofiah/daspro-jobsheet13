@@ -36,14 +36,23 @@ public class Kafe21 {
     public static void main(String[] args) {
         Scanner sc21 = new Scanner(System.in);
         Menu("Andi", true);
-        System.out.print("\nMasukkan nomor menu yang ingin anda pesan: ");
-        int pilihanMenu = sc21.nextInt();
-        System.out.print("Masukkan jumlah item yang ingin dipesan: ");
-        int banyakItem = sc21.nextInt();
-        sc21.nextLine();
-        System.out.print("Masukkan kode promo (jika ada, jika tidak ada cukup kosongkan): ");
-        String kodePromo = sc21.nextLine();
-        int totalHarga = hitungTotalHarga(pilihanMenu, banyakItem, kodePromo);
-        System.out.println("Total harga untuk pesanan Anda: Rp" + totalHarga);
+
+        int totalSemua = 0;
+        while (true) {
+            System.out.print("\nMasukkan nomor menu yang ingin anda pesan (0 untuk selesai): ");
+            int pilihanMenu = sc21.nextInt();
+            if(pilihanMenu == 0){
+                break;
+            }
+            System.out.print("Masukkan jumlah item yang ingin dipesan: ");
+            int banyakItem = sc21.nextInt();
+            sc21.nextLine();
+            System.out.print("Masukkan kode promo (jika ada, jika tidak ada cukup kosongkan): ");
+            String kodePromo = sc21.nextLine();
+            int totalHarga = hitungTotalHarga(pilihanMenu, banyakItem, kodePromo);
+            totalSemua += totalHarga;
+            System.out.println("Total harga untuk menu ini: Rp " + totalHarga);
+        }
+        System.out.println("Total semua pesanan anda: Rp " + totalSemua);
     }
 }
